@@ -1,4 +1,4 @@
-package org.bomartin;
+package org.bomartin.resource;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

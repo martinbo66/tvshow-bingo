@@ -1,4 +1,4 @@
-package org.bomartin;
+package org.bomartin.resource;
 
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 
