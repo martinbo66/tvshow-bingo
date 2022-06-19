@@ -1,0 +1,30 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog
+    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+
+    <changeSet author="bomartin" id="create tvshow table">
+        <createTable tableName="tvshow">
+            <column name="id" type="uuid">
+                <constraints nullable="false"/>
+            </column>
+            <column name="show_title" type="VARCHAR(255)"/>
+            <column name="game_title" type="VARCHAR(255)"/>
+            <column name="center_square" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="load tvshows table" author="bomartin">
+        <loadUpdateData tableName="tvshow" file="data/tvshow-1.0.csv" relativeToChangelogFile="true" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="show_title" type="string"/>
+            <column name="game_title" type="string"/>
+            <column name="center_square" type="string"/>
+        </loadUpdateData>
+    </changeSet>
+</databaseChangeLog>
