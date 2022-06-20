@@ -11,6 +11,6 @@ import java.util.UUID;
 public class PhraseRepository implements PanacheRepositoryBase<Phrase, UUID> {
 
     public List<Phrase> findByTvShowId(UUID tvshowId){
-        return find("tvshowId", tvshowId).list();
+        return list("tvshowId", tvshowId);
     }
 }

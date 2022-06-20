@@ -8,8 +8,4 @@ import java.util.UUID;
 
 @ApplicationScoped
 public class TvShowRepository implements PanacheRepositoryBase<TvShow, UUID> {
-
-    public TvShow findByTitle(String title){
-        return find("showTitle", title).firstResult();
-    }
 }

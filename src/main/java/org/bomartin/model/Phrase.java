@@ -21,4 +21,27 @@ public class Phrase extends PanacheEntityBase {
     @Column(name = "words")
     private String words;
 
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public UUID getTvshowId() {
+        return tvshowId;
+    }
+
+    public void setTvshowId(UUID tvshowId) {
+        this.tvshowId = tvshowId;
+    }
+
+    public String getWords() {
+        return words;
+    }
+
+    public void setWords(String words) {
+        this.words = words;
+    }
 }
