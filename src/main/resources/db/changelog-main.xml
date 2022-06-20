@@ -27,4 +27,49 @@
             <column name="center_square" type="string"/>
         </loadUpdateData>
     </changeSet>
+
+    <changeSet author="bomartin" id="create phrases table">
+        <createTable tableName="phrase">
+            <column name="id" type="uuid">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tvshow_id" type="uuid">
+                <constraints nullable="false"/>
+            </column>
+            <column name="words" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="load phrase table for survivor" author="bomartin">
+        <loadUpdateData tableName="phrase" file="data/phrase-survivor-1.0.csv" relativeToChangelogFile="true" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="tvshow_id" type="uuid"/>
+            <column name="words" type="string"/>
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="load phrase table for toddlers" author="bomartin">
+        <loadUpdateData tableName="phrase" file="data/phrase-toddlers-1.0.csv" relativeToChangelogFile="true" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="tvshow_id" type="uuid"/>
+            <column name="words" type="string"/>
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="load phrase table for top chef" author="bomartin">
+        <loadUpdateData tableName="phrase" file="data/phrase-topchef-1.0.csv" relativeToChangelogFile="true" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="tvshow_id" type="uuid"/>
+            <column name="words" type="string"/>
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="load phrase table for aliens" author="bomartin">
+        <loadUpdateData tableName="phrase" file="data/phrase-aliens-1.0.csv" relativeToChangelogFile="true" primaryKey="id">
+            <column name="id" type="uuid"/>
+            <column name="tvshow_id" type="uuid"/>
+            <column name="words" type="string"/>
+        </loadUpdateData>
+    </changeSet>
+
 </databaseChangeLog>
