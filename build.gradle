@@ -24,6 +24,9 @@ dependencies {
     implementation 'io.quarkus:quarkus-liquibase'
     implementation 'io.quarkus:quarkus-kubernetes-config'
     implementation 'io.quarkus:quarkus-hibernate-validator'
+    implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.projectlombok:lombok:1.18.22'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
 }

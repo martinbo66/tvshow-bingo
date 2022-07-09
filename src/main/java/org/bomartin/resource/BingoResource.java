@@ -30,7 +30,7 @@ public class BingoResource {
     @GET
     @Path("{tvshowId}/card")
     public BingoCardDto getCardForShow(@PathParam("tvshowId") UUID tvshowId) {
-        // TODO: MOst of this logic should be in a service class/method
+        // TODO: Most of this logic should be in a service class/method
 
         // Retrieve the show
         TvShow tvshowEntity = tvShowRepository.findById(tvshowId);

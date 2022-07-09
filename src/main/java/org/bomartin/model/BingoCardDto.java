@@ -51,6 +51,10 @@ public class BingoCardDto implements Serializable {
         return centerSquare;
     }
 
+    public List<PhraseDto> getPhraseList() {
+        return phraseList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
