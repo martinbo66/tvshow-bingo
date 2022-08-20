@@ -8,6 +8,7 @@ import org.bomartin.model.Phrase;
 import org.bomartin.model.TvShow;
 import org.bomartin.repository.PhraseRepository;
 import org.bomartin.repository.TvShowRepository;
+import org.bomartin.service.BingoService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +34,7 @@ class BingoResourceTest {
     public void testGetCardForShow_good() {
         QuarkusMock.installMockForInstance(new MockTvShowRepository(), tvShowRepository);
         QuarkusMock.installMockForInstance(new MockPhraseRepository(), phraseRepository);
-        BingoResource sut = new BingoResource(tvShowRepository, phraseRepository);
+        BingoResource sut = new BingoResource(tvShowRepository, phraseRepository, new BingoService());
 
         BingoCardDto actual = sut.getCardForShow(UUID.randomUUID());
 
@@ -41,8 +42,8 @@ class BingoResourceTest {
         Assertions.assertEquals(actual.getCenterSquare(), CENTER_SQUARE);
         Assertions.assertEquals(actual.getShowTitle(), SHOW_TITLE);
         Assertions.assertEquals(actual.getGameTitle(), GAME_TITLE);
-        Assertions.assertNotNull(actual.getPhraseList());
-        Assertions.assertEquals(3, actual.getPhraseList().size());
+        Assertions.assertNotNull(actual.getSquareTitleList());
+        Assertions.assertEquals(3, actual.getSquareTitleList().size());
     }
     @Priority(1)
     @Alternative

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class BingoCardDto implements Serializable {
     private final UUID tvshowId;
@@ -13,14 +12,14 @@ public class BingoCardDto implements Serializable {
     private final String gameTitle;
     private final String centerSquare;
 
-    private List<PhraseDto> phraseList;
+    private List<String> squareTitleList;
 
     public BingoCardDto(UUID tvshowId, String showTitle, String gameTitle, String centerSquare) {
         this.tvshowId = tvshowId;
         this.showTitle = showTitle;
         this.gameTitle = gameTitle;
         this.centerSquare = centerSquare;
-        this.phraseList = new ArrayList<>();
+        this.squareTitleList = new ArrayList<>();
     }
 
     public BingoCardDto(TvShow showEntity) {
@@ -28,11 +27,11 @@ public class BingoCardDto implements Serializable {
         this.showTitle = showEntity.showTitle;
         this.gameTitle = showEntity.gameTitle;
         this.centerSquare = showEntity.centerSquare;
-        this.phraseList = new ArrayList<>();
+        this.squareTitleList = new ArrayList<>();
     }
 
-    public void setPhraseList(List<Phrase> phrases) {
-        this.phraseList = phrases.stream().map(PhraseDto::new).collect(Collectors.toUnmodifiableList());
+    public void setSquareTitleList(List<String> squareTitles) {
+        this.squareTitleList = squareTitles;
     }
 
     public UUID getTvshowId() {
@@ -51,8 +50,8 @@ public class BingoCardDto implements Serializable {
         return centerSquare;
     }
 
-    public List<PhraseDto> getPhraseList() {
-        return phraseList;
+    public List<String> getSquareTitleList() {
+        return squareTitleList;
     }
 
     @Override
@@ -74,9 +73,10 @@ public class BingoCardDto implements Serializable {
     @Override
     public String toString() {
         return getClass().getSimpleName() + "(" +
-                "id = " + tvshowId + ", " +
+                "showId = " + tvshowId + ", " +
                 "showTitle = " + showTitle + ", " +
                 "gameTitle = " + gameTitle + ", " +
-                "centerSquare = " + centerSquare + ")";
+                "centerSquare = " + centerSquare + ", " +
+                "countOfSquareTitles = " + squareTitleList.size() + ")";
     }
 }

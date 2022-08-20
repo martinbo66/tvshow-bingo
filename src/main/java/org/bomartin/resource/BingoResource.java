@@ -6,6 +6,7 @@ import org.bomartin.model.Phrase;
 import org.bomartin.model.TvShow;
 import org.bomartin.repository.PhraseRepository;
 import org.bomartin.repository.TvShowRepository;
+import org.bomartin.service.BingoService;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -21,10 +22,15 @@ public class BingoResource {
     private final TvShowRepository tvShowRepository;
     private final PhraseRepository phraseRepository;
 
+    private final BingoService bingoService;
+
     @Inject
-    public BingoResource(TvShowRepository tvShowRepository, PhraseRepository phraseRepository) {
+    public BingoResource(TvShowRepository tvShowRepository,
+                         PhraseRepository phraseRepository,
+                         BingoService bingoService) {
         this.tvShowRepository = tvShowRepository;
         this.phraseRepository = phraseRepository;
+        this.bingoService = bingoService;
     }
 
     @GET
@@ -39,13 +45,13 @@ public class BingoResource {
         }
         // Retrieve the phrases
         List<Phrase> phrases = phraseRepository.findByTvShowId(tvshowId);
-        if (null == phrases || phrases.isEmpty()) {
-            Log.debugf("No phrases found for show %s", tvshowEntity.showTitle);
-            phrases = new ArrayList<>();
+        if (null == phrases || phrases.size() < 24) {
+            Log.debugf("Not enough phrases found for show %s", tvshowEntity.showTitle);
+            phrases = new ArrayList<Phrase>();
         }
 
         BingoCardDto bingoCard = new BingoCardDto(tvshowEntity);
-        bingoCard.setPhraseList(phrases);
+        bingoCard.setSquareTitleList(bingoService.squareTitlesFromPhrases(phrases));
         return bingoCard;
     }
 }
