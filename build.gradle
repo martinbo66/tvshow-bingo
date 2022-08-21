@@ -30,6 +30,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.24'
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
+//    testImplementation 'io.quarkus:quarkus-junit5-mockito:2.11.2.Final'
+    testImplementation ('com.github.javafaker:javafaker:0.18') { exclude module: 'snakeyaml' }
+    testImplementation group: 'org.yaml', name: 'snakeyaml', version: '1.20'
 }
 
 group 'org.bomartin'
