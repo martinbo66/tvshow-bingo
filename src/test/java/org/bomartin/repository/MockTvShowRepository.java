@@ -7,12 +7,16 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
 import java.util.UUID;
 
-import static org.bomartin.repository.BingoTestData.*;
+import static org.bomartin.repository.BingoTestData.CENTER_SQUARE;
+import static org.bomartin.repository.BingoTestData.GAME_TITLE;
+import static org.bomartin.repository.BingoTestData.SHOW_TITLE;
 
 @Priority(1)
 @Alternative
 @ApplicationScoped
 public class MockTvShowRepository extends TvShowRepository {
+
+    @Override
     public TvShow findById(UUID id) {
         TvShow tvShow = new TvShow();
         tvShow.showTitle = SHOW_TITLE;
